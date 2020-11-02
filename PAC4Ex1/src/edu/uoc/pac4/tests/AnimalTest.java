@@ -83,7 +83,7 @@ class AnimalTest {
 		}
 							
 		Exception ex = assertThrows(Exception.class, () -> animal.setYearBirth(currentYear+20));
-		assertEquals(AnimalException.MSG_ERR_YEAR_BIRTH,ex.getMessage());
+		assertEquals(AnimalException.getMSG_ERR_YEAR_BIRTH(),ex.getMessage());
 		assertEquals(currentYear-1,animal.getYearBirth());
 				
 		try {
@@ -116,7 +116,7 @@ class AnimalTest {
 		}
 							
 		Exception ex = assertThrows(Exception.class, () -> animal.setWeight(0));
-		assertEquals(AnimalException.MSG_ERR_WEIGHT,ex.getMessage());
+		assertEquals(AnimalException.getMSG_ERR_WEIGHT(),ex.getMessage());
 		assertEquals(weight,animal.getWeight());
 				
 		try {
