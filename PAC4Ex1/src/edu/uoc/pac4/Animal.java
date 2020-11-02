@@ -19,7 +19,7 @@ public class Animal {
 	/**
 	 * next Id
 	 */
-	public static int nextId = 0;
+	public static  int nextId = 0;
 	
 	
 	/**
@@ -30,29 +30,36 @@ public class Animal {
 	/**
 	 * yearBirth
 	 */
-	private static int yearBirth = 2000;
+	private int yearBirth = 2000;
 	
 	/**
 	 * weight
 	 */
-	private static double weight= 0.1;
+	private double weight= 0.1;
 	
 	
-	private static Gender gender = Gender.valueOf("UNDEFINED");
+	public Gender gender = Gender.valueOf("UNDEFINED");
 	
 	
-	public Animal() throws Exception {
-		this(0, "Foo", 2000, 0.1, gender);
+	
+	private void Animal(Object anObject) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Animal() throws AnimalException  {
+		this(0, "Foo", 2000, 0.1,  Gender.UNDEFINED);
 	}
 
-	public Animal(int i, String string, int j, double d, Gender gender ) throws Exception {
+	public Animal(int id, String name, int yearBirth, double weight, Gender gender ) throws AnimalException {
 		// TODO Auto-generated constructor stub
 		
+		setId(id);
 		setName(name);
 		setYearBirth(yearBirth);
 		setWeight(weight);
 		setGender(gender);
-		setId(id);
+		
 		
 	}
 
@@ -61,16 +68,17 @@ public class Animal {
 	}
 
 	public void setId(int id) {
-		this.id = id;
-		plus();
+		this.id = nextId;
+			plus(id);
+		
 	}
 
-	public static int getNextId() {
+	public  int getNextId() {
 		return nextId;
 	}
 
-	private void plus() {
-		nextId++;
+	private int plus(int id) {
+		return nextId++;
 	}
 
 	public String getName() {
@@ -85,7 +93,7 @@ public class Animal {
 		return yearBirth;
 	}
 
-	public void setYearBirth(int yearBirth) throws Exception {
+	public void setYearBirth(int yearBirth) throws AnimalException {
 		
         LocalDate hoy = LocalDate.now();
         int today = hoy.getYear();
@@ -95,7 +103,7 @@ public class Animal {
 	
 		} else {
 		
-			Animal.yearBirth = yearBirth;
+			this.yearBirth = yearBirth;
 		}
 	}
 
@@ -103,7 +111,7 @@ public class Animal {
 		return weight;
 	}
 
-	public void setWeight(double weight) throws Exception {
+	public void setWeight(double weight) throws AnimalException {
 		
 		if (weight < 0.1) {
 			
@@ -111,7 +119,7 @@ public class Animal {
 	
 		} else {
 		
-		Animal.weight = weight;
+		this.weight = weight;
 		
 		}
 	}
@@ -121,22 +129,35 @@ public class Animal {
 	}
 
 	public void setGender(Gender gender) {
-		Animal.gender = gender;
+		this.gender = gender;
 	}
 	
 @Override
-	public boolean equals(Object anObject ) {
-		
-	if (Animal.name == name && Animal.yearBirth == yearBirth &&
-			Animal.weight == weight && Animal.gender == gender) {
+public boolean equals(Object obj) {
 	
-		return true;
-		
-	}
+	final Animal other =  (Animal) obj;
 	
-	return false;
-		
-	}
+	
+    if (obj == null) {
+        return false;
+    }
+
+    if (obj.getClass() != this.getClass()) {
+        return false;
+    }
+    
+
+    if (this.name == other.name && 
+    		this.weight == other.weight && this.gender == other.gender &&
+    		this.yearBirth == other.yearBirth) {
+        return true;
+    }
+    
+
+    return false;
+}
+
+
 
 @Override
 
