@@ -1,4 +1,5 @@
 package edu.uoc.pac4;
+
 import java.time.LocalDate;
 
 /**
@@ -18,7 +19,7 @@ public class Animal {
 	/**
 	 * next Id
 	 */
-	private static int nextId = 0;
+	public static int nextId = 0;
 	
 	
 	/**
@@ -36,16 +37,16 @@ public class Animal {
 	 */
 	private double weight= 0.1;
 	
-	private Gender gender ;
+	
+	private static Gender gender ;
 	
 	
 	public Animal() throws Exception {
-		this(0, "Foo", 2000, 0.1);
+		this(0, "Foo", 2000, 0.1, gender);
 	}
 
-	public Animal(int i, String string, int j, double d) throws Exception {
+	public Animal(int i, String string, int j, double d, Gender gender ) throws Exception {
 		// TODO Auto-generated constructor stub
-		
 		
 		setName(name);
 		setYearBirth(yearBirth);
@@ -90,12 +91,11 @@ public class Animal {
         int today = hoy.getYear();
 		
 		if (yearBirth > today) {
-			throw new Exception("");
+			throw new AnimalException(AnimalException.MSG_ERR_YEAR_BIRTH);
 	
-		}
+		} else {
 		
-		else {
-		this.yearBirth = yearBirth;
+			this.yearBirth = yearBirth;
 		}
 	}
 
@@ -106,11 +106,10 @@ public class Animal {
 	public void setWeight(double weight) throws Exception {
 		
 		if (weight < 0.1) {
-			throw new Exception();
+			
+			throw new AnimalException(AnimalException.MSG_ERR_WEIGHT);
 	
-		}
-		
-		else {
+		} else {
 		
 		this.weight = weight;
 		}
@@ -121,7 +120,7 @@ public class Animal {
 	}
 
 	public void setGender(Gender gender) {
-		this.gender = gender;
+		Animal.gender = gender;
 	}
 	
 

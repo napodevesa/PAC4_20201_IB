@@ -2,19 +2,22 @@ package edu.uoc.pac4;
 
 public class AnimalException extends Exception {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
-	String  MSG_ERR_YEAR_BIRTH = "[ERROR] Animal´s birth year cannot be later than current year";
-	String  MSG_ERR_WEIGHT = "[ERROR] Animal´s weight cannot be smaller than 0.1 kg.";
+	public static String  MSG_ERR_YEAR_BIRTH = "[ERROR] Animal´s birth year cannot be later than current year";
+	public static String  MSG_ERR_WEIGHT = "[ERROR] Animal´s weight cannot be smaller than 0.1 kg.";
 
 
 	public AnimalException()  {
-		
+		super();
 	}
 	
-	
+	public AnimalException(String msg)  {
+			
+		super(msg);
+		
+	}
+
 	
 }
