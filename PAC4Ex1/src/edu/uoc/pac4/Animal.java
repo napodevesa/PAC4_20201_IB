@@ -30,15 +30,15 @@ public class Animal {
 	/**
 	 * yearBirth
 	 */
-	private int yearBirth = 2000;
+	private static int yearBirth = 2000;
 	
 	/**
 	 * weight
 	 */
-	private double weight= 0.1;
+	private static double weight= 0.1;
 	
 	
-	private static Gender gender ;
+	private static Gender gender = Gender.valueOf("UNDEFINED");
 	
 	
 	public Animal() throws Exception {
@@ -95,7 +95,7 @@ public class Animal {
 	
 		} else {
 		
-			this.yearBirth = yearBirth;
+			Animal.yearBirth = yearBirth;
 		}
 	}
 
@@ -111,7 +111,8 @@ public class Animal {
 	
 		} else {
 		
-		this.weight = weight;
+		Animal.weight = weight;
+		
 		}
 	}
 
@@ -122,6 +123,29 @@ public class Animal {
 	public void setGender(Gender gender) {
 		Animal.gender = gender;
 	}
+	
+@Override
+	public boolean equals(Object anObject ) {
+		
+	if (Animal.name == name && Animal.yearBirth == yearBirth &&
+			Animal.weight == weight && Animal.gender == gender) {
+	
+		return true;
+		
+	}
+	
+	return false;
+		
+	}
+
+@Override
+
+public String toString() {
+    return "My name is " + name + " and I'm " + 20 + " years old.\nMy gender is " +  gender + " and my weight is " + weight + " kg.";
+    		
+    		
+}
+	
 	
 
 }
