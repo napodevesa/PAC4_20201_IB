@@ -20,14 +20,16 @@ public class Carnivore extends Animal {
 	
 	public Food eat (Food food)throws AnimalException {
 		
-		if (food.type.PLANT == FoodType.PLANT) {
-			throw new AnimalException(AnimalException.MSG_ERR_HERBIVORE_FOOD);
-		}else {
+		if (food.type == FoodType.PLANT) {
+			throw new AnimalException(AnimalException.MSG_ERR_CARNIVORE_FOOD);
+		}
 		
-		
+		if (food.type == FoodType.MEAT) {
+			addEnergy(0.2 * food.getKcal());
+		}
+
 		return food;
 		}
 		
-	}
 
 }

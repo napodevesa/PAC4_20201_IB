@@ -2,22 +2,50 @@ package edu.uoc.pac4;
 
 import java.time.LocalDate;
 
-public class Goat extends Herbivore{
+public class Goat extends Herbivore implements Milkable{
 
 	public  int PEAK_MILK = 80;
 	public  int dim = 0;
 	public  int maxiMilkPerDay = 6;
 	
 	public Goat (String name, int yearBirth, double weight) throws AnimalException {
-		super(name, yearBirth, weight, gender);
+		//super(name, yearBirth, weight, gender);
 		// TODO Auto-generated constructor stub
 		
 		setName(name);
 		setYearBirth(yearBirth);
 		setWeight(weight);
 		setGender(gender);
-		
+
 	
+	}
+	
+	public Goat (String name, int yearBirth, double weight, int maxMilkPerDay) throws AnimalException {
+		
+		// TODO Auto-generated constructor stub
+
+	}
+	
+	public static  int getPeakMilk() {
+		return 0;
+
+	}
+
+	public static  int getDaysInMilk() {
+		return MAX_DIM;
+
+	}
+	public static void setDaysInMilk(int dim) {
+
+
+	}
+
+	public static  int getMaxiMilkPerDay() {
+		return 0;
+
+	}
+	public static  void setMaxiMilkPerDay(int maxMilkPerDay) {
+		
 	}
 
 
@@ -27,6 +55,11 @@ public class Goat extends Herbivore{
 		System.out.print("Beeeeee!!!");
 		
 	}
+
+@Override
+public void setGender(Gender gender) {
+	this.gender = Gender.FEMALE;
+}
 	
 @Override
 public String toString() {

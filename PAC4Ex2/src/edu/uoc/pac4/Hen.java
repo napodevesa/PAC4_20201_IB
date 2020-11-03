@@ -2,17 +2,9 @@ package edu.uoc.pac4;
 
 import java.time.LocalDate;
 
-public class Hen extends Omnivore{
+public class Hen extends Omnivore implements EggLayer{
 	
-	public Gender gender = Gender.valueOf("FEMALE");
 
-	
-	public Hen() throws AnimalException {
-		super();
-		// TODO Auto-generated constructor stub
-		
-		
-	}
 	
 	public Hen(String name, int yearBirth, double weight) throws AnimalException {
 		// TODO Auto-generated constructor stub
@@ -22,11 +14,24 @@ public class Hen extends Omnivore{
 		setYearBirth(yearBirth);
 		setWeight(weight);
 		
+		
 
 	}
 	
-
 	
+public static boolean lay() {
+	
+	float a = (float) Math.random();
+	
+	if (a > 0.5) {
+		return true;
+	}
+	
+	return false;
+	
+}
+
+
 @Override
 	
 	public void makeNoise() {
@@ -34,6 +39,10 @@ public class Hen extends Omnivore{
 		
 	}
 		
+@Override
+	public void setGender(Gender gender) {
+		this.gender = Gender.FEMALE;
+	}
 	
 	@Override
 	public String toString() {

@@ -22,14 +22,15 @@ public class Omnivore extends Animal{
 	
 	public Food eat (Food food)throws AnimalException {
 		
-		if (food.type.MEAT == FoodType.MEAT) {
-			throw new AnimalException(AnimalException.MSG_ERR_HERBIVORE_FOOD);
-		}else {
-		
-		
-		return food;
+		if (food.type == FoodType.PLANT) {
+			addEnergy(0.05 * food.getKcal());
 		}
 		
-	}
+		if (food.type == FoodType.MEAT) {
+			addEnergy(0.15 * food.getKcal());
+		}
+
+		return food;
+		}
 
 }

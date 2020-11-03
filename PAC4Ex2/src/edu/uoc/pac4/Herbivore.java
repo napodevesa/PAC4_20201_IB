@@ -21,14 +21,19 @@ public class Herbivore extends Animal{
 	
 	public Food eat (Food food)throws AnimalException {
 		
-		if (food.type.MEAT == FoodType.MEAT) {
+		if (food.type == FoodType.MEAT) {
 			throw new AnimalException(AnimalException.MSG_ERR_HERBIVORE_FOOD);
-		}else {
+		}
+		
+		if (food.type == FoodType.PLANT) {
+			addEnergy(0.1 * food.getKcal());
+		}
+		
 		
 		
 		return food;
 		}
 		
-	}
+	
 
 }

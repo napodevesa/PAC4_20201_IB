@@ -218,12 +218,12 @@ public  int compareTo (Animal obj) {
 	Animal a = (Animal)obj;
 	
 	if (this.yearBirth > a.yearBirth) {
-		return 1;
+		return -1;
 	}
 	
 	if (this.yearBirth == a.yearBirth) {
-			if (this.weight == a.weight) {
-				return 1;
+			if (this.weight > a.weight) {
+				return -1;
 			}
 			
 			
