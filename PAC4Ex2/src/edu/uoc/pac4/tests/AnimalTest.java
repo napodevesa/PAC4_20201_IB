@@ -119,7 +119,7 @@ class AnimalTest {
 		}
 							
 		Exception ex = assertThrows(Exception.class, () -> animal.setWeight(0));
-		assertEquals(AnimalException.MSG_ERR_WEIGTH,ex.getMessage());
+		assertEquals(AnimalException.MSG_ERR_WEIGHT,ex.getMessage());
 		assertEquals(weight,animal.getWeight());
 				
 		try {

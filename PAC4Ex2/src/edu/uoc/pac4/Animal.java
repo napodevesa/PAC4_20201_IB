@@ -2,6 +2,7 @@ package edu.uoc.pac4;
 
 import java.time.LocalDate;
 
+
 /**
  * Animal
  * 
@@ -9,7 +10,7 @@ import java.time.LocalDate;
  * @version 1
  */
 
-public class Animal {
+public class Animal implements Comparable <Animal> {
 	
 	/**
 	 * ID
@@ -33,17 +34,14 @@ public class Animal {
 	private int yearBirth = 2000;
 	
 	/**
-	 * yearsOld
-	 */
-	private int yearOld;
-	
-	/**
 	 * weight
 	 */
 	private double weight= 0.1;
 	
 	
-	public Gender gender = Gender.valueOf("UNDEFINED");
+	public Gender gender;
+	
+	private double energy= 80;
 	
 	
 	
@@ -53,7 +51,8 @@ public class Animal {
 	}
 	
 	public Animal() throws AnimalException  {
-		this(0, "Foo", 2000, 0.1,  Gender.UNDEFINED);
+		this(0, "Foo", 2000, 0.1,  Gender.FEMALE);
+		
 	}
 
 	public Animal(int id, String name, int yearBirth, double weight, Gender gender ) throws AnimalException {
@@ -93,14 +92,10 @@ public class Animal {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
-	
 	public int getYearBirth() {
 		return yearBirth;
 	}
-	
-	
 
 	public void setYearBirth(int yearBirth) throws AnimalException {
 		
@@ -141,6 +136,58 @@ public class Animal {
 		this.gender = gender;
 	}
 	
+	public FoodType food(FoodType type) {
+		return type;
+	}
+	
+	
+	public void addEnergy(double energy) throws AnimalException {
+		
+		if (energy>=0&& energy<=100) {
+		this.energy = this.energy + energy;
+		
+		} 
+		
+		else {
+			throw new AnimalException(AnimalException.MSG_ERR_ENERGY);
+		}
+		
+		if (this.energy>100) {
+			this.energy= 100;
+		}
+	}
+		
+	
+	public double getEnergy() {
+		return energy;
+	}
+
+	public void  makeNoise() {
+		System.out.print("");
+		
+	}
+
+public Food eat (Food food) throws AnimalException {
+	
+	return food;
+	
+}
+
+
+
+public String toString() {
+	
+	LocalDate hoy = LocalDate.now();
+    int today = hoy.getYear();
+    int todayFinal=  today - yearBirth;
+    
+    return "My name is " + name + " and I'm " + todayFinal  + 
+    		" years old.\nMy gender is " +  gender + " and my weight is " 
+    		+ weight + " kg.";
+    		
+    		
+}
+
 @Override
 public boolean equals(Object obj) {
 	
@@ -166,22 +213,25 @@ public boolean equals(Object obj) {
     return false;
 }
 
-
-
 @Override
-
-public String toString() {
+public  int compareTo (Animal obj) {
+	Animal a = (Animal)obj;
 	
-	LocalDate hoy = LocalDate.now();
-    int today = hoy.getYear();
-    int todayFinal=  today - yearBirth;
-    
-    return "My name is " + name + " and I'm " + todayFinal  + " years old.\nMy gender is " +  gender + " and my weight is " + weight + " kg.";
-    		
-    		
+	if (this.yearBirth > a.yearBirth) {
+		return 1;
+	}
+	
+	if (this.yearBirth == a.yearBirth) {
+			if (this.weight == a.weight) {
+				return 1;
+			}
+			
+			
+			
+		}
+	return 0;
+	
 }
 
-
-	
 
 }
