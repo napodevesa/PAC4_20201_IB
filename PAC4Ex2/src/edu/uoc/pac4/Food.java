@@ -1,4 +1,5 @@
 package edu.uoc.pac4;
+import java.lang.IllegalArgumentException;
 
 /**
  * Food
@@ -7,8 +8,15 @@ package edu.uoc.pac4;
  * @version 1
  */
 
-public class Food {
+public class Food  extends Exception{
 	
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Name
 	 * 
@@ -79,9 +87,9 @@ public class Food {
 	public void setKcal(int kcal)  {
 		
 		
-		if (kcal <0) {
+		if (kcal < 0) {
 			
-			throw new IllegalArgumentException("Indice fuera de los límites");
+			throw new IllegalArgumentException("[ERROR] Food's kcal cannot be negative!!");
 			
 		}
 		
@@ -110,7 +118,7 @@ public class Food {
 	
 	@Override
 	public String toString() {
-	    return name + "(" + type + ")"+ ":" + kcal + "Kcal" ;
+	    return name + " (" + type + ")"+ ": " + kcal + " kcal" ;
 	    		
 	    		
 	}
