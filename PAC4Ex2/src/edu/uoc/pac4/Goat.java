@@ -9,41 +9,35 @@ public class Goat extends Herbivore implements Milkable{
 	public  int maxiMilkPerDay = 6;
 	
 	public Goat (String name, int yearBirth, double weight) throws AnimalException {
-		//super(name, yearBirth, weight, gender);
-		// TODO Auto-generated constructor stub
+		super();
 		
-		setName(name);
-		setYearBirth(yearBirth);
-		setWeight(weight);
-		setGender(gender);
+		PEAK_MILK = 80;
+		dim=0;
+		setMaxMilkPerDay(6);
+		
+		this.setName(name);
+		this.setYearBirth(yearBirth);
+		this.setWeight(weight);
+		this.setGender(gender);
 
 	
 	}
 	
 	public Goat (String name, int yearBirth, double weight, int maxMilkPerDay) throws AnimalException {
 		
-		// TODO Auto-generated constructor stub
-
-	}
-	
-	public static  int getPeakMilk() {
-		return 0;
-
-	}
-
-	public static  int getDaysInMilk() {
-		return MAX_DIM;
-
-	}
-	public static void setDaysInMilk(int dim) {
-
-
-	}
-
-	
-	public static  void setMaxiMilkPerDay(int maxMilkPerDay) {
+		super();
 		
+		dim=0;
+		
+		this.setName(name);
+		this.setYearBirth(yearBirth);
+		this.setWeight(weight);
+		this.setMaxMilkPerDay(maxiMilkPerDay);
+		this.setGender(gender);
+
 	}
+	
+
 
 
 @Override
@@ -66,24 +60,47 @@ public String toString() {
     int todayFinal=  today - getYearBirth();
     
     return "My name is " + getName() + " and I'm " + todayFinal  + " years old.\nMy gender is " +  getGender() +
-    		" and my weight is " + getWeight() + " kg.\nI'm a goat";
+    		" and my weight is " + getWeight() + " kg.\nI'm a goat.";
     		
     		
 }
 
-public Integer getMaxMilkPerDay() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-public double milk() {
+@Override
+public int getDaysInMilk() {
 	// TODO Auto-generated method stub
 	return 0;
 }
 
-public Object setMaxMilkPerDay(int i) {
+@Override
+public void setDaysInMilk(int dim) {
 	// TODO Auto-generated method stub
-	return null;
+	
 }
+
+@Override
+public int getPeakMilk() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public int getMaxiMilkPerDay() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public void setMaxMilkPerDay(int maxMilkPerday) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public int getMaxMilkPerDay() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+
 
 }

@@ -1,69 +1,63 @@
 package edu.uoc.pac4;
 
+import java.util.Random;
+
 public interface Milkable  {
 
 	public int MAX_DIM = 300;
 	
-	public int dim = 0;
-	
-	public int days = 0;
 	
 	String MSG_ERR_NO_MILK = "[ERROR] This animal is not pregnant, so it cannot give milk.";
 	String MSG_ERR_DAYS_IN_MILK_NEGATIVE = "[ERROR] Days in milk cannot be a negative value!!";
 	String MSG_ERR_DAYS_IN_MILK_GREATER = "[ERROR] Days in milk cannot be greater than"+MAX_DIM+"!!";
 	String MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE = "[ERROR] Max. liters of milk per dat cannot be a negative value!!";
 
-
-	public static  int getDaysInMilk() {
-		return dim;
+	int getDaysInMilk ();
+	void setDaysInMilk (int dim);
+	int getPeakMilk();
+	int getMaxiMilkPerDay ();
+	void setMaxMilkPerDay (int maxMilkPerday);
 	
-	}
-	public static void setDaysInMilk(int dim) {
-		
-		if (dim < 0) {
-			throw new IllegalArgumentException(MSG_ERR_DAYS_IN_MILK_NEGATIVE);
-		}
-		
-		else if (dim > MAX_DIM) {
-			throw new IllegalArgumentException(MSG_ERR_DAYS_IN_MILK_GREATER);
-		}else{
-		
-			Milkable.dim= dim;
-		
-		}
-		
-		return;
 	
-	}
-	
-	public static  int getPeakMilk() {
-		return dim;
-	
-	}
-	
-	public static  int getMaxiMilkPerDay() {
-		return getMaxiMilkPerDay();
-	
-	}
-	public static  void setMaxiMilkPerDay(int maxMilkPerDay) {
+	default double milk () throws AnimalException{
+		if (getDaysInMilk()>=MAX_DIM) {
+			throw new AnimalException (MSG_ERR_NO_MILK);
 		
-		if (maxMilkPerDay <0) {
-			throw new IllegalArgumentException(MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE);
 		}else {
+			setDaysInMilk(getDaysInMilk()+1);
 			
+			if (getDaysInMilk ()<=getPeakMilk()) {
+				Random a= new Random();
+				
+				float rand= (float) (0.75 + a.nextFloat()*(1-0.75));
+				return rand*getMaxiMilkPerDay();
+			}
+		else {
+			
+			Random a= new Random();
+			float rand= (float) (0+a.nextFloat()*(0.5-0));
+			return rand*getMaxiMilkPerDay();
 		}
+	}	
+}
 		
+	default int getDaysLeftInMilk() {
+		return MAX_DIM - getDaysInMilk();
+	}
+	int getMaxMilkPerDay();
 	
-	}
-	public static double milk() {
-		return 0;
-		
-		
-	}
-	public static  int getDaysLeftInMilk() {
-		return days;
+
 	
-	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

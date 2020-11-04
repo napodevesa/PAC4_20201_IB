@@ -15,7 +15,7 @@ public class Cow extends Herbivore implements Milkable{
 		setName(name);
 		setYearBirth(yearBirth);
 		setWeight(weight);
-		setGender(gender);
+		setGender(Gender.FEMALE);
 		
 	
 	}
@@ -26,48 +26,11 @@ public Cow (String name, int yearBirth, double weight, int maxMilkPerDay) throws
 	setName(name);
 	setYearBirth(yearBirth);
 	setWeight(weight);
-	setGender(gender);
+	setGender(Gender.FEMALE);
 	setMaxMilkPerDay(maxMilkPerDay);
 
 	}
 
-
-
-public static  int getPeakMilk() {
-	return 0;
-
-}
-
-public static  int getDaysInMilk() {
-	return MAX_DIM;
-
-}
-public static void setDaysInMilk(int dim) {
-
-	if (dim <0) {
-		throw new IllegalArgumentException(MSG_ERR_DAYS_IN_MILK_NEGATIVE);
-	}
-	
-	else if (dim >MAX_DIM) {
-		throw new IllegalArgumentException(MSG_ERR_DAYS_IN_MILK_GREATER);
-	}else{
-	
-		
-		
-	
-	}
-
-}
-
-public Integer getMaxMilkPerDay() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-public Object setMaxMilkPerDay(int i) {
-	// TODO Auto-generated method stub
-	return null;
-}
 
 
 @Override
@@ -95,10 +58,6 @@ public String toString() {
     		
 }
 
-public double milk() {
-	// TODO Auto-generated method stub
-	return 0;
-}
 
 
 
