@@ -45,6 +45,7 @@ public class Animal implements Comparable <Animal> {
 	
 	
 	
+	
 	private void Animal(Object anObject) {
 		// TODO Auto-generated method stub
 		
@@ -230,6 +231,17 @@ public  int compareTo (Animal obj) {
 			
 		}
 	return 0;
+	
+}
+
+public Object getEnclosure() {
+	// TODO Auto-generated method stub
+	return getEnclosure();
+}
+
+public void setEnclosure(Enclosure enclosure1) {
+	
+
 	
 }
 

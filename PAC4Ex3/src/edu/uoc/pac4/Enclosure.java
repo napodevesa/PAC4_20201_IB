@@ -1,24 +1,32 @@
 package edu.uoc.pac4;
 
-public class Enclosure {
+
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class Enclosure extends Exception {
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private String name ;
 	private static int size;
 	
 	
 	public Enclosure(String name, int size)  {
-		// TODO Auto-generated constructor stub
-		
-		
-		setName(name);
-		setSize(size);
 	
-		
+		this.setName(name);
+		this.setSize(size);
+
 		
 	}
 	
 	
+	
+	TreeSet<Animal> Animal = new TreeSet<Animal>();
 	
 	
 	public String getName() {
@@ -30,15 +38,17 @@ public class Enclosure {
 	public int getSize() {
 		return size;
 	}
+	
+	
 	public void setSize(int size) {
-		if (size <0) {
+		if (size < 0) {
 			throw new IllegalArgumentException("[ERROR] Enclosure's size cannot be 0"
 					+ " or a negative value!!");
 		}
 		
-		else if (size < Enclosure.size) {
-			throw new IllegalArgumentException("[ERROR] Enclosure's size"+"" +"cannot be less "
-					+ "than the number of animals"+"" + "that are in the enclosure!!");
+		if (size < Enclosure.size) {
+			throw new IllegalArgumentException("[ERROR] Enclosure's size"+ size +"cannot be less "
+					+ "than the number of animals" + Enclosure.size + "that are in the enclosure!!");
 		}else{
 		
 			Enclosure.size = size;
@@ -49,22 +59,74 @@ public class Enclosure {
 	
 	
 	public boolean add(Animal animal) {
-		return false;
+		
+		if (animal== null) {
+			throw new NullPointerException("[ERROR] Animal object cannot be null!!");
+			
+		}else {
+			Animal.add(animal);
+			
+			animal.setEnclosure(null);
+			
+			if (Animal.size()>size) {
+				Animal.remove(animal);
+			}
+		}
+		
+		return true;
 	}
 	
 	public boolean remove(Animal animal) {
-		return false;
+		
+		Animal.remove(Animal.last());
+		
+		return true;
+	}
+	
+	public void remove() {
+		
+			Animal.removeAll(Animal);
+		
 	}
 	
 	public boolean exists(Animal animal) {
-		return false;
+		
+		Iterator<Animal> i = Animal.iterator();
+	     
+		while(i.hasNext()) {
+	         if(i.next()==animal) {
+	        	 return true;
+	      }
+	   }
+		
+		return true;
+		
+		
 	}
 	
 
 	
 	public boolean isEmpty() {
-		return false;
+	
+		return Animal.isEmpty();
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+
+	    return "Enclosure"+ name +"with"+ size + "m2";
+	    		
+	    		
+	}
+	
+	public Object getAnimals() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 	
 	

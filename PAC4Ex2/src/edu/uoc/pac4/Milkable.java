@@ -17,7 +17,8 @@ public interface Milkable  {
 	int getPeakMilk();
 	int getMaxiMilkPerDay ();
 	void setMaxMilkPerDay (int maxMilkPerday);
-	
+
+	/*
 	
 	default double milk () throws AnimalException{
 		if (getDaysInMilk()>=MAX_DIM) {
@@ -46,7 +47,7 @@ public interface Milkable  {
 	}
 	int getMaxMilkPerDay();
 	
-
+*/
 	
 	
 
