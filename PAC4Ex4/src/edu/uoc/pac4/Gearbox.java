@@ -1,6 +1,6 @@
 package edu.uoc.pac4;
 
-public class Gearbox{
+public class Gearbox implements Cloneable{
 
 	private int numGears;
 	
@@ -15,4 +15,13 @@ public class Gearbox{
 	public void setNumGears(int numGears) {
 		this.numGears = numGears;
 	}
+	
+	@Override
+ 	public Object clone() throws CloneNotSupportedException {
+  
+		Gearbox b= new Gearbox (this.numGears);
+		return b;
+  }
+	
+	
 }

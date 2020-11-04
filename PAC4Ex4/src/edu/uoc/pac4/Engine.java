@@ -1,6 +1,6 @@
 package edu.uoc.pac4;
 
-public class Engine{
+public class Engine implements Cloneable{
 
 	private int numCylinders;
 	
@@ -15,4 +15,13 @@ public class Engine{
 	public void setNumCylinders(int numCylinders) {
 		this.numCylinders = numCylinders;
 	}
+	
+	
+	 @Override
+	 	public Object clone() throws CloneNotSupportedException {
+	  
+		 Engine a= new Engine (this.numCylinders);
+		 
+		 return a;
+	  }
 }

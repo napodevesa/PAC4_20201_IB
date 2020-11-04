@@ -1,6 +1,6 @@
 package edu.uoc.pac4;
 
-public class Car{
+public class Car implements Cloneable{
 
 	private String make;
 	private int numDoors;
@@ -39,4 +39,18 @@ public class Car{
 	public Gearbox getGearbox() {
 		return gearbox;
 	}
+	
+	
+	 @Override
+	public Object clone() throws CloneNotSupportedException {
+	  
+	    Car nueva= new Car (this.make,this.numDoors, this.numDoors, this.numDoors);
+	    return nueva;
+	  }
+	
+	
+	
+	
+	
+	
 }
