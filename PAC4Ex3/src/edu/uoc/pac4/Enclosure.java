@@ -1,8 +1,12 @@
 package edu.uoc.pac4;
 
-
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.Iterator;
+import java.util.List;
+
+
+
 
 public class Enclosure extends Exception {
 	
@@ -60,6 +64,8 @@ public class Enclosure extends Exception {
 	
 	public boolean add(Animal animal) {
 		
+		
+		
 		if (animal== null) {
 			throw new NullPointerException("[ERROR] Animal object cannot be null!!");
 			
@@ -67,13 +73,17 @@ public class Enclosure extends Exception {
 			Animal.add(animal);
 			
 			animal.setEnclosure(null);
+				 
 			
-			if (Animal.size()>size) {
-				Animal.remove(animal);
-			}
+					if (Animal.size()>size) {
+						Animal.remove(animal);
+					}
+					
+			
 		}
 		
-		return true;
+		return false;
+			
 	}
 	
 	public boolean remove(Animal animal) {
@@ -99,7 +109,7 @@ public class Enclosure extends Exception {
 	      }
 	   }
 		
-		return true;
+		return false;
 		
 		
 	}
@@ -107,8 +117,9 @@ public class Enclosure extends Exception {
 
 	
 	public boolean isEmpty() {
-	
-		return Animal.isEmpty();
+
+			return Animal.isEmpty();
+		
 	}
 	
 	
@@ -121,9 +132,13 @@ public class Enclosure extends Exception {
 	    		
 	}
 	
-	public Object getAnimals() {
+	public ArrayList <Animal> getAnimals() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		 ArrayList<edu.uoc.pac4.Animal> aList = new ArrayList<Animal>();
+		 aList.addAll(Animal);
+		 
+		return   aList;
 	}
 	
 	

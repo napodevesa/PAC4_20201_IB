@@ -2,11 +2,11 @@ package edu.uoc.pac4;
 
 import java.time.LocalDate;
 
-public class Goat extends Herbivore implements Milkable{
+public abstract class Goat extends Herbivore implements Milkable{
 
-	public  int PEAK_MILK = 80;
-	public  int dim = 0;
-	public  int maxiMilkPerDay = 6;
+	private  int PEAK_MILK;
+	private  int dim;
+	private int maxMilkPerDay;
 	
 	public Goat (String name, int yearBirth, double weight) throws AnimalException {
 		super();
@@ -32,12 +32,60 @@ public class Goat extends Herbivore implements Milkable{
 		this.setName(name);
 		this.setYearBirth(yearBirth);
 		this.setWeight(weight);
-		this.setMaxMilkPerDay(maxiMilkPerDay);
+		this.setMaxMilkPerDay(maxMilkPerDay);
 		this.setGender(gender);
 
 	}
 	
+	@Override
+	
+	public int getPeakMilk() {
+		return PEAK_MILK;
 
+	}
+	
+	@Override
+
+	public  int getDaysInMilk() {
+		return dim;
+
+	}
+	
+	@Override
+
+	public  int getMaxMilkPerDay() {
+		return this.maxMilkPerDay;
+
+	}
+	
+	@Override
+	public void setDaysInMilk(int dim) throws IllegalArgumentException{
+		
+		if (dim<0) {
+			throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_NEGATIVE);
+		}else if (dim>MAX_DIM) {
+			throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_GREATER);
+		}else {
+			
+			this.dim=dim;
+		}
+		
+
+
+	}
+	
+	@Override
+	
+	public void setMaxiMilkPerDay(int maxMilkPerDay)throws IllegalArgumentException {
+		
+		if (maxMilkPerDay<0) {
+			throw new IllegalArgumentException (MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE);
+		}else {
+			this.maxMilkPerDay=maxMilkPerDay;
+		}
+		
+		
+	}
 
 
 @Override
@@ -65,41 +113,9 @@ public String toString() {
     		
 }
 
-@Override
-public int getDaysInMilk() {
-	// TODO Auto-generated method stub
-	return 0;
-}
 
-@Override
-public void setDaysInMilk(int dim) {
-	// TODO Auto-generated method stub
-	
-}
 
-@Override
-public int getPeakMilk() {
-	// TODO Auto-generated method stub
-	return 0;
-}
 
-@Override
-public int getMaxiMilkPerDay() {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
-@Override
-public void setMaxMilkPerDay(int maxMilkPerday) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public int getMaxMilkPerDay() {
-	// TODO Auto-generated method stub
-	return 0;
-}
 
 
 

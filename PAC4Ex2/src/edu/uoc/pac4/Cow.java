@@ -4,14 +4,17 @@ import java.time.LocalDate;
 
 public class Cow extends Herbivore implements Milkable{
 
-	public  int PEAK_MILK = 90;
-	public  int dim = 0;
-	public  int maxiMilkPerDay = 35;
+	public  int PEAK_MILK;
+	public  int dim;
+	public  int maxiMilkPerDay;
 	
 	public Cow (String name, int yearBirth, double weight) throws AnimalException {
-		//super(name, yearBirth, weight, gender);
-		// TODO Auto-generated constructor stub
 		
+		super();
+		
+		dim=0;
+		PEAK_MILK = 90;
+		setMaxiMilkPerDay(35);
 		setName(name);
 		setYearBirth(yearBirth);
 		setWeight(weight);
@@ -22,7 +25,10 @@ public class Cow extends Herbivore implements Milkable{
 	
 public Cow (String name, int yearBirth, double weight, int maxMilkPerDay) throws AnimalException {
 		
-		// TODO Auto-generated constructor stub
+	super();
+	
+	dim=0;
+	PEAK_MILK = 90;
 	setName(name);
 	setYearBirth(yearBirth);
 	setWeight(weight);
@@ -34,11 +40,64 @@ public Cow (String name, int yearBirth, double weight, int maxMilkPerDay) throws
 
 
 @Override
+
+public int getPeakMilk() {
+	return PEAK_MILK;
+
+}
+
+@Override
+
+public  int getDaysInMilk() {
+	return dim;
+
+}
+
+@Override
+public void setDaysInMilk(int dim) throws IllegalArgumentException{
+	
+	if (dim<0) {
+		throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_NEGATIVE);
+	}else if (dim>MAX_DIM) {
+		throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_GREATER);
+	}else {
+		
+		this.dim=dim;
+	}
+	
+
+
+}
+
+@Override
+
+public void setMaxiMilkPerDay(int maxMilkPerDay)throws IllegalArgumentException {
+	
+	if (maxiMilkPerDay<0) {
+		throw new IllegalArgumentException (MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE);
+	}else {
+		this.maxiMilkPerDay=maxiMilkPerDay;
+	}
+	
+	
+}
+
+
+
+@Override
 	
 	public void makeNoise() {
 		System.out.print("Muuuuuu!!!");
 		
 	}
+
+public void makeNoise (int times) {
+	for(int i=0; i<times; i++) {
+		System.out.print("Muuuuuu!!!");
+	}
+}
+
+
 
 @Override
 public void setGender(Gender gender) {

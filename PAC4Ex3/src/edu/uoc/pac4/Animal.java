@@ -234,9 +234,9 @@ public  int compareTo (Animal obj) {
 	
 }
 
-public Object getEnclosure() {
+public Enclosure getEnclosure() {
 	// TODO Auto-generated method stub
-	return getEnclosure();
+	return null;
 }
 
 public void setEnclosure(Enclosure enclosure1) {

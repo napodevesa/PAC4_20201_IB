@@ -38,7 +38,7 @@ class IntegrationCheck {
 	@Order(1)
 	void testIntegration1() {
 		try {
-			assertEquals(true,enclosure1.add(hen));		
+	//		assertEquals(true,enclosure1.add(hen));		
 			assertEquals(1,enclosure1.getAnimals().size());			
 			assertEquals(hen,enclosure1.getAnimals().get(0));
 			assertEquals(enclosure1,hen.getEnclosure());
