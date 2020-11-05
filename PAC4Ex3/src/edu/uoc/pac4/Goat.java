@@ -2,11 +2,11 @@ package edu.uoc.pac4;
 
 import java.time.LocalDate;
 
-public abstract class Goat extends Herbivore implements Milkable{
+public class Goat extends Herbivore implements Milkable{
 
-	private  int PEAK_MILK;
-	private  int dim;
-	private int maxMilkPerDay;
+	public  int PEAK_MILK=80;
+	public  int dim=0;
+	public int maxMilkPerDay;
 	
 	public Goat (String name, int yearBirth, double weight) throws AnimalException {
 		super();
@@ -36,56 +36,58 @@ public abstract class Goat extends Herbivore implements Milkable{
 		this.setGender(gender);
 
 	}
-	
-	@Override
-	
-	public int getPeakMilk() {
-		return PEAK_MILK;
 
+
+@Override
+
+public int getPeakMilk() {
+	return PEAK_MILK;
+
+}
+
+@Override
+
+public  int getDaysInMilk() {
+	return dim;
+
+}
+
+@Override
+public void setDaysInMilk(int dim) throws IllegalArgumentException{
+	
+	if (dim<0) {
+		throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_NEGATIVE);
+	}else if (dim>MAX_DIM) {
+		throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_GREATER);
+	}else {
+		
+		this.dim=dim;
 	}
 	
-	@Override
 
-	public  int getDaysInMilk() {
-		return dim;
 
+}
+
+
+@Override
+
+public void setMaxMilkPerDay(int maxMilkPerDay)throws IllegalArgumentException {
+	
+	if (maxMilkPerDay<0) {
+		throw new IllegalArgumentException (MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE);
+	}else {
+		this.maxMilkPerDay=maxMilkPerDay;
 	}
 	
-	@Override
-
-	public  int getMaxMilkPerDay() {
-		return this.maxMilkPerDay;
-
-	}
 	
-	@Override
-	public void setDaysInMilk(int dim) throws IllegalArgumentException{
-		
-		if (dim<0) {
-			throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_NEGATIVE);
-		}else if (dim>MAX_DIM) {
-			throw new IllegalArgumentException (MSG_ERR_DAYS_IN_MILK_GREATER);
-		}else {
-			
-			this.dim=dim;
-		}
-		
+}
 
+@Override
 
-	}
-	
-	@Override
-	
-	public void setMaxiMilkPerDay(int maxMilkPerDay)throws IllegalArgumentException {
-		
-		if (maxMilkPerDay<0) {
-			throw new IllegalArgumentException (MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE);
-		}else {
-			this.maxMilkPerDay=maxMilkPerDay;
-		}
-		
-		
-	}
+public  int getMaxMilkPerDay() {
+	return this.getMaxMilkPerDay();
+
+}
 
 
 @Override
@@ -111,4 +113,11 @@ public String toString() {
     		" and my weight is " + getWeight() + " kg.\nI'm a goat.";
     		
     		
+}
+
+
+
+
+
+
 }

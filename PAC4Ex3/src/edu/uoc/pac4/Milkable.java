@@ -15,40 +15,8 @@ public interface Milkable  {
 	int getDaysInMilk ();
 	void setDaysInMilk (int dim);
 	int getPeakMilk();
-	int getMaxiMilkPerDay ();
+	int getMaxMilkPerDay ();
 	void setMaxMilkPerDay (int maxMilkPerday);
-
-	
-	
-	default double milk () throws AnimalException{
-		if (getDaysInMilk()>=MAX_DIM) {
-			throw new AnimalException (MSG_ERR_NO_MILK);
-		
-		}else {
-			setDaysInMilk(getDaysInMilk()+1);
-			
-			if (getDaysInMilk ()<=getPeakMilk()) {
-				Random a= new Random();
-				
-				float rand= (float) (0.75 + a.nextFloat()*(1-0.75));
-				return rand*getMaxiMilkPerDay();
-			}
-		else {
-			
-			Random a= new Random();
-			float rand= (float) (0+a.nextFloat()*(0.5-0));
-			return rand*getMaxiMilkPerDay();
-		}
-	}	
-}
-		
-	default int getDaysLeftInMilk() {
-		return MAX_DIM - getDaysInMilk();
-	}
-	
-	int getMaxMilkPerDay();
-	void setMaxiMilkPerDay(int maxMilkPerDay) throws IllegalArgumentException;
-	
 	
 	
 	

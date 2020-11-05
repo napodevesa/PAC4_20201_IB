@@ -40,14 +40,7 @@ public class Car implements Cloneable{
 		return gearbox;
 	}
 	
-	/*
-	 @Override
-	public Object clone() throws CloneNotSupportedException {
-	  
-	    Car nueva= new Car (this.make,this.numDoors, this.numDoors, this.numDoors);
-	    return nueva;
-	  }
-	 */
+
 	
 	public Car clone() throws CloneNotSupportedException {
         try {

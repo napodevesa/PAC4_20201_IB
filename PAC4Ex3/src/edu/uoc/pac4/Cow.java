@@ -6,7 +6,7 @@ public class Cow extends Herbivore implements Milkable{
 
 	public  int PEAK_MILK;
 	public  int dim;
-	public  int maxiMilkPerDay;
+	public  int maxMilkPerDay;
 	
 	public Cow (String name, int yearBirth, double weight) throws AnimalException {
 		
@@ -14,7 +14,7 @@ public class Cow extends Herbivore implements Milkable{
 		
 		dim=0;
 		PEAK_MILK = 90;
-		setMaxiMilkPerDay(35);
+		setMaxMilkPerDay(35);
 		setName(name);
 		setYearBirth(yearBirth);
 		setWeight(weight);
@@ -69,17 +69,25 @@ public void setDaysInMilk(int dim) throws IllegalArgumentException{
 
 }
 
+
 @Override
 
-public void setMaxiMilkPerDay(int maxMilkPerDay)throws IllegalArgumentException {
+public void setMaxMilkPerDay(int maxMilkPerDay)throws IllegalArgumentException {
 	
-	if (maxiMilkPerDay<0) {
+	if (maxMilkPerDay<0) {
 		throw new IllegalArgumentException (MSG_ERR_MAX_LITERS_PER_DAYS_NEGATIVE);
 	}else {
-		this.maxiMilkPerDay=maxiMilkPerDay;
+		this.maxMilkPerDay=maxMilkPerDay;
 	}
 	
 	
+}
+
+@Override
+
+public  int getMaxMilkPerDay() {
+	return this.getMaxMilkPerDay();
+
 }
 
 
@@ -116,10 +124,6 @@ public String toString() {
     		
     		
 }
-
-
-
-
 
 
 
