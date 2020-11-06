@@ -2,6 +2,7 @@ package edu.uoc.pac4;
 
 public class Gearbox implements Cloneable{
 
+	//numGears
 	private int numGears;
 	
 	public Gearbox(int numGears) {
