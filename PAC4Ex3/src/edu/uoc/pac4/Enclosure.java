@@ -1,9 +1,10 @@
 package edu.uoc.pac4;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.TreeSet;
-
+import java.util.Set;
 
 
 
@@ -16,7 +17,8 @@ public class Enclosure extends Exception {
 	private static final long serialVersionUID = 1L;
 	
 	private String name ;
-	private static int size;
+	private int size;
+	private Set<Animal> animals;
 	
 	
 	public Enclosure(String name, int size)  {
@@ -44,17 +46,17 @@ public class Enclosure extends Exception {
 	
 	
 	public void setSize(int size) {
-		if (size < 0) {
+		if (size <= 0) {
 			throw new IllegalArgumentException("[ERROR] Enclosure's size cannot be 0"
 					+ " or a negative value!!");
 		}
 		
-		if (size < Enclosure.size) {
+		if (size < animals.size()) {
 			throw new IllegalArgumentException("[ERROR] Enclosure's size"+ size +"cannot be less "
-					+ "than the number of animals" + Enclosure.size + "that are in the enclosure!!");
+					+ "than the number of animals" + animals.size() + "that are in the enclosure!!");
 		}else{
 		
-			Enclosure.size = size;
+			this.size = size;
 		
 		}
 		
@@ -69,27 +71,34 @@ public class Enclosure extends Exception {
 			throw new NullPointerException("[ERROR] Animal object cannot be null!!");
 			
 		}else {
+			if(animals.size() == size) {
+				return false;
+			}
+			if(exists(animal)) {
+				return false;
+			}
+			
 			Animal.add(animal);
 			
-			animal.setEnclosure(null);
+			animal.setEnclosure(this);
 				 
-			
-					if (Animal.size()>size) {
-						Animal.remove(animal);
-					}
-					
+	
 			
 		}
 		
-		return false;
+		return true;
 			
 	}
 	
 	public boolean remove(Animal animal) {
 		
-		Animal.remove(Animal.last());
-		
-		return true;
+		try {
+			animals.remove(animal);
+			animal.setEnclosure(null);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	public void remove() {
@@ -132,7 +141,7 @@ public class Enclosure extends Exception {
 	public ArrayList <Animal> getAnimals() {
 		// TODO Auto-generated method stub
 		
-		 ArrayList<edu.uoc.pac4.Animal> aList = new ArrayList<Animal>();
+		 ArrayList<edu.uoc.pac4.Animal> aList = new ArrayList<Animal>(animals);
 		 aList.addAll(Animal);
 		 
 		return   aList;
